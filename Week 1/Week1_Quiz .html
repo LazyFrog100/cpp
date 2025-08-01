@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 1 C++ Complete Quiz - Days 1-5</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 10px;
+            background: #f0f2f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            background: #fff;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        h1, .subtitle {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        h1 {
+            color: #2c3e50;
+            font-size: 2.2em;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            color: #7f8c8d;
+            font-style: italic;
+        }
+        .quiz-info, .question {
+            background: #fff;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        .quiz-info {
+            border-left: 4px solid #3498db;
+            margin-bottom: 25px;
+        }
+        .question {
+            border: 1px solid #e9ecef;
+        }
+        .question h3 {
+            color: #2c3e50;
+            margin: 0 0 10px 0;
+            display: flex;
+            align-items: center;
+            font-size: 1.1em;
+        }
+        .day-badge {
+            color: white;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        .day1 { background: #e74c3c; }
+        .day2 { background: #f39c12; }
+        .day3 { background: #27ae60; }
+        .day4 { background: #8e44ad; }
+        .day5 { background: #16a085; }
+        .options { margin-top: 10px; }
+        .option {
+            margin: 8px 0;
+            padding: 8px 12px;
+            border: 1px solid #ecf0f1;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            transition: all 0.2s ease;
+        }
+        .option:hover {
+            background: #f1f2f6;
+            border-color: #3498db;
+        }
+        .option input[type="radio"] {
+            margin-right: 8px;
+        }
+        .option.selected {
+            background: #e3f2fd;
+            border-color: #2196f3;
+        }
+        .code-block {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 12px;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+            margin: 8px 0;
+            border-left: 3px solid #3498db;
+        }
+        .submit-section {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        .submit-btn, .reset-btn {
+            border: none;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            color: white;
+        }
+        .submit-btn {
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            padding: 12px 30px;
+            font-size: 1.1em;
+        }
+        .reset-btn {
+            background: #95a5a6;
+            padding: 10px 25px;
+            margin-left: 10px;
+            border-radius: 15px;
+        }
+        .results {
+            display: none;
+            margin-top: 25px;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .score-excellent { background: linear-gradient(45deg, #27ae60, #2ecc71); color: white; }
+        .score-good { background: linear-gradient(45deg, #f39c12, #e67e22); color: white; }
+        .score-average { background: linear-gradient(45deg, #e74c3c, #c0392b); color: white; }
+        .progress-bar {
+            background: #ecf0f1;
+            height: 8px;
+            border-radius: 4px;
+            margin: 15px 0;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+        .explanation {
+            display: none;
+            background: #e8f5e8;
+            border: 1px solid #4caf50;
+            border-radius: 6px;
+            padding: 8px 12px;
+            margin-top: 8px;
+            font-size: 0.9em;
+            color: #2e7d32;
+        }
+        .explanation.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 C++ Complete Foundations Quiz</h1>
+        <p class="subtitle">Week 1: Days 1-5 Comprehensive Assessment</p>
+        
+        <div class="quiz-info">
+            <h3>📋 Quiz Instructions</h3>
+            <ul>
+                <li><strong>Questions:</strong> 50 multiple-choice questions</li>
+                <li><strong>Topics:</strong> C++ Setup, I/O, Data Types, Number Systems, Type Casting, Operators</li>
+                <li><strong>Scoring:</strong> Each correct answer = 1 point</li>
+                <li><strong>Passing:</strong> 70% indicates strong understanding</li>
+                <li><strong>Features:</strong> Randomized questions & partial submission allowed</li>
+            </ul>
+        </div>
+
+        <form id="quizForm">
+            <!-- Day 1 Questions: C++ Setup & First Program -->
+            
+            <div class="question">
+                <h3><span class="day-badge day1">DAY 1</span><span class="question-number">Q1</span></h3>
+                <p>What is the purpose of <code>#include &lt;iostream&gt;</code> in a C++ program?</p>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q1" value="a">It includes math functions</label>
+                    <label class="option"><input type="radio" name="q1" value="b">It includes input/output stream functionality</label>
+                    <label class="option"><input type="radio" name="q1" value="c">It includes string manipulation functions</label>
+                    <label class="option"><input type="radio" name="q1" value="d">It's optional in C++</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3><span class="day-badge day1">DAY 1</span><span class="question-number">Q2</span></h3>
+                <p>What does <code>return 0;</code> indicate in the main() function?</p>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q2" value="a">The program encountered an error</label>
+                    <label class="option"><input type="radio" name="q2" value="b">The program executed successfully</label>
+                    <label class="option"><input type="radio" name="q2" value="c">The program needs to restart</label>
+                    <label class="option"><input type="radio" name="q2" value="d">Return is optional in main()</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3><span class="day-badge day1">DAY 1</span><span class="question-number">Q3</span></h3>
+                <p>What is the advantage of using <code>using namespace std;</code>?</p>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q3" value="a">It makes the program run faster</label>
+                    <label class="option"><input type="radio" name="q3" value="b">It allows using standard library names without std:: prefix</label>
+                    <label class="option"><input type="radio" name="q3" value="c">It prevents compilation errors</label>
+                    <label class="option"><input type="radio" name="q3" value="d">It includes all C++ libraries</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3><span class="day-badge day1">DAY 1</span><span class="question-number">Q4</span></h3>
+                <p>What does the #include &lt;bits/stdc++.h&gt; header do in competitive programming?</p>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q4" value="a">Includes only iostream and vector</label>
+                    <label class="option"><input type="radio" name="q4" value="b">Includes all standard C++ libraries (GCC only)</label>
+                    <label class="option"><input type="radio" name="q4" value="c">Includes only algorithm and math libraries</label>
+                    <label class="option"><input type="radio" name="q4" value="d">It's a non-standard header and should never be used</label>
+                </div>
+            </div>
+
+            <!-- Day 2 Questions: Input/Output -->
+            
+            <div class="question">
+                <h3><span class="day-badge day2">DAY 2</span><span class="question-number">Q5</span></h3>
+                <p>What's the issue with this I/O code?</p>
+                <div class="code-block">int n;<br>string name;<br>cin >> n;<br>getline(cin, name);<br>cout << "Name: " << name << endl;</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q5" value="a">Works perfectly fine</label>
+                    <label class="option"><input type="radio" name="q5" value="b">getline() will read an empty string due to leftover newline</label>
+                    <label class="option"><input type="radio" name="q5" value="c">Compilation error</label>
+                    <label class="option"><input type="radio" name="q5" value="d">cin >> n will fail</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3><span class="day-badge day2">DAY 2</span><span class="question-number">Q6</span></h3>
+                <p>Correct way to read a long long using scanf?</p>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q6" value="a">scanf("%d", &number);</label>
+                    <label class="option"><input type="radio" name="q6" value="b">scanf("%ld", &number);</label>
+                    <label class="option"><input type="radio" name="q6" value="c">scanf("%lld", &number);</label>
+                    <label class="option"><input type="radio" name="q6" value="d">scanf("%ll", &number);</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3><span class="day-badge day2">DAY 2</span><span class="question-number">Q7</span></h3>
+                <p>Most efficient way to read a million integers in competitive programming?</p>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q7" value="a">Use scanf with %d</label>
+                    <label class="option"><input type="radio" name="q7" value="b">Use cin with sync_with_stdio(false) and cin.tie(NULL)</label>
+                    <label class="option"><input type="radio" name="q7" value="c">Use getchar() and manual parsing</label>
+                    <label class="option"><input type="radio" name="q7" value="d">Use regular cin without optimizations</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3><span class="day-badge day2">DAY 2</span><span class="question-number">Q8</span></h3>
+                <p>Difference between endl and "\n" in competitive programming?</p>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q8" value="a">No difference at all</label>
+                    <label class="option"><input type="radio" name="q8" value="b">endl flushes the buffer and can be slower</label>
+                    <label class="option"><input type="radio" name="q8" value="c">"\n" only works with printf</label>
+                    <label class="option"><input type="radio" name="q8" value="d">endl is always faster</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3><span class="day-badge day2">DAY 2</span><span class="question-number">Q9</span></h3>
+                <p>How to display 2 decimal places using printf?</p>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q9" value="a">printf("%.2f", number);</label>
+                    <label class="option"><input type="radio" name="q9" value="b">printf("%2f", number);</label>
+                    <label class="option"><input type="radio" name="q9" value="c">printf("%f.2", number);</label>
+                    <label class="option"><input type="radio" name="q9" value="d">printf("%2.f", number);</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3><span class="day-badge day2">DAY 2</span><span class="question-number">Q10</span></h3>
+                <p>Precision issue with this floating-point I/O?</p>
+                <div class="code-block">double x = 1.0/3.0;<br>cout << x << endl;<br>printf("%.10f\n", x);<br>cout << fixed << setprecision(10) << x << endl;</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q10" value="a">All three outputs will be identical</label>
+                    <label class="option"><input type="radio" name="q10" value="b">cout shows 6 digits, printf shows 10, cout with setprecision shows 10</label>
+                    <label class="option"><input type="radio" name="q10" value="c">Only printf will show accurate precision</label>
+                    <label class="option"><input type="radio" name="q10" value="d">setprecision doesn't work with cout</label>
+                </div>
+            </div>
+
+            <!-- Day 3 Questions: Variables, Constants, Data Types -->
+            
+            <div class="question">
+                <h3><span class="day-badge day3">DAY 3</span><span class="question-number">Q12</span></h3>
+                <p>Range of long long data type (64-bit signed)?</p>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q12" value="a">-2^31 to 2^31-1</label>
+                    <label class="option"><input type="radio" name="q12" value="b">-2^63 to 2^63-1</label>
+                    <label class="option"><input type="radio" name="q12" value="c">0 to 2^64-1</label>
+                    <label class="option"><input type="radio" name="q12" value="d">-9 × 10^15 to 9 × 10^15</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3><span class="day-badge day3">DAY 3</span><span class="question-number">Question 15</span></h3>
+                <p>What will this tricky increment expression produce?</p>
+                <div class="code-block">int x = 3;<br>int result = ++x + x++ + ++x;<br>cout << result << " " << x << endl;</div>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q15" value="a">
+                        15 6
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q15" value="b">
+                        14 6
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q15" value="c">
+                        Undefined behavior due to multiple unsequenced modifications
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q15" value="d">
+                        13 6
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3><span class="day-badge day3">DAY 3</span><span class="question-number">Question 16</span></h3>
+                <p>What happens with this integer overflow scenario?</p>
+                <div class="code-block">int max_int = 2147483647;<br>cout << max_int + 1 << endl;</div>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q16" value="a">
+                        2147483648
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q16" value="b">
+                        -2147483648 (integer overflow)
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q16" value="c">
+                        Compilation error
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q16" value="d">
+                        Runtime error
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3><span class="day-badge day3">DAY 3</span><span class="question-number">Question 17</span></h3>
+                <p>What's the output of this character increment scenario?</p>
+                <div class="code-block">char c = 'A';<br>cout << c++ << " " << ++c << endl;</div>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q17" value="a">
+                        A C
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q17" value="b">
+                        A B
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q17" value="c">
+                        B C
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q17" value="d">
+                        65 67
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3><span class="day-badge day3">DAY 3</span><span class="question-number">Question 18</span></h3>
+                <p>What will this boolean and increment combination produce?</p>
+                <div class="code-block">int x = 0;<br>bool result = (++x == 1) && (x++ == 1);<br>cout << result << " " << x << endl;</div>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q18" value="a">
+                        1 2
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q18" value="b">
+                        0 2
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q18" value="c">
+                        1 1
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q18" value="d">
+                        0 1
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3><span class="day-badge day3">DAY 3</span><span class="question-number">Question 19</span></h3>
+                <p>What's the difference between these constant declarations?</p>
+                <div class="code-block">const int MAX = 100;<br>#define MAX 100</div>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q19" value="a">
+                        No difference
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q19" value="b">
+                        const creates a typed variable, #define does text replacement
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q19" value="c">
+                        #define is always faster
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q19" value="d">
+                        const is processed by preprocessor
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3><span class="day-badge day3">DAY 3</span><span class="question-number">Question 20</span></h3>
+                <p>What will this complex increment and assignment produce?</p>
+                <div class="code-block">int a = 5, b = 10;<br>a = ++b - a++;<br>cout << a << " " << b << endl;</div>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q20" value="a">
+                        6 11
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q20" value="b">
+                        5 11
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q20" value="c">
+                        Undefined behavior
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q20" value="d">
+                        11 6
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3><span class="day-badge day1">DAY 1</span><span class="question-number">Question 21</span></h3>
+                <p>Which namespace practice is considered best for competitive programming efficiency?</p>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q21" value="a">
+                        Always use using namespace std; for maximum speed
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q21" value="b">
+                        Never use using namespace std; always use std:: prefix
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q21" value="c">
+                        Use specific using declarations like using std::cout;
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q21" value="d">
+                        using namespace std; is perfectly fine for competitive programming
+                    </label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3><span class="day-badge day3">DAY 3</span><span class="question-number">Question 22</span></h3>
+                <p>What will this complex expression with multiple operators evaluate to?</p>
+                <div class="code-block">int x = 2, y = 3;<br>int result = x++ * ++y - --x + y--;<br>cout << result << " " << x << " " << y << endl;</div>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q22" value="a">
+                        10 2 3
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q22" value="b">
+                        8 2 3
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q22" value="c">
+                        Undefined behavior (unsequenced modifications)
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q22" value="d">
+                        6 2 3
+                    </label>
+                </div>
+            </div>
+
+            <!-- Day 4-5 Questions: Number Systems, Type Casting, Operators -->
+
+            <div class="question">
+                <h3><span class="day-badge day4">DAY 4</span><span class="question-number">Q24</span></h3>
+                <p>What is the binary representation of decimal number 15?</p>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q24" value="a">1010</label>
+                    <label class="option"><input type="radio" name="q24" value="b">1111</label>
+                    <label class="option"><input type="radio" name="q24" value="c">1100</label>
+                    <label class="option"><input type="radio" name="q24" value="d">1001</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3><span class="day-badge day4">DAY 4</span><span class="question-number">Q25</span></h3>
+                <p>In a system where int is 32-bit, what happens to this cast?</p>
+                <div class="code-block">(int)(4294967296LL)</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q25" value="a">0</label>
+                    <label class="option"><input type="radio" name="q25" value="b">4294967296</label>
+                    <label class="option"><input type="radio" name="q25" value="c">-1</label>
+                    <label class="option"><input type="radio" name="q25" value="d">Undefined behavior</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3><span class="day-badge day4">DAY 4</span><span class="question-number">Q26</span></h3>
+                <p>What is hexadecimal A in decimal?</p>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q26" value="a">10</label>
+                    <label class="option"><input type="radio" name="q26" value="b">11</label>
+                    <label class="option"><input type="radio" name="q26" value="c">12</label>
+                    <label class="option"><input type="radio" name="q26" value="d">15</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3><span class="day-badge day5">DAY 5</span><span class="question-number">Q27</span></h3>
+                <p>What is the exact evaluation order and result of this expression?</p>
+                <div class="code-block">int x = 2;<br>int y = x++ * ++x + x--;</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q27" value="a">18</label>
+                    <label class="option"><input type="radio" name="q27" value="b">16</label>
+                    <label class="option"><input type="radio" name="q27" value="c">Undefined behavior due to sequence points</label>
+                    <label class="option"><input type="radio" name="q27" value="d">20</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3><span class="day-badge day4">DAY 4</span><span class="question-number">Q28</span></h3>
+                <p>What is the result of 255 in hexadecimal?</p>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q28" value="a">FF</label>
+                    <label class="option"><input type="radio" name="q28" value="b">FE</label>
+                    <label class="option"><input type="radio" name="q28" value="c">EF</label>
+                    <label class="option"><input type="radio" name="q28" value="d">EE</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3><span class="day-badge day5">DAY 5</span><span class="question-number">Q29</span></h3>
+                <p>In this expression, what is the associativity and evaluation order?</p>
+                <div class="code-block">a *= b += c /= d</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q29" value="a">Left-to-right, a then b then c</label>
+                    <label class="option"><input type="radio" name="q29" value="b">Right-to-left, d then c then b then a</label>
+                    <label class="option"><input type="radio" name="q29" value="c">Right-to-left for assignment, left-to-right for others</label>
+                    <label class="option"><input type="radio" name="q29" value="d">Implementation defined</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3><span class="day-badge day4">DAY 4</span><span class="question-number">Q30</span></h3>
+                <p>What is the decimal value of hexadecimal 1F?</p>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q30" value="a">30</label>
+                    <label class="option"><input type="radio" name="q30" value="b">31</label>
+                    <label class="option"><input type="radio" name="q30" value="c">32</label>
+                    <label class="option"><input type="radio" name="q30" value="d">33</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3><span class="day-badge day5">DAY 5</span><span class="question-number">Q31</span></h3>
+                <p>What is the result of this precedence puzzle?</p>
+                <div class="code-block">2 + 3 * 4 % 5 - 1</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q31" value="a">3</label>
+                    <label class="option"><input type="radio" name="q31" value="b">1</label>
+                    <label class="option"><input type="radio" name="q31" value="c">5</label>
+                    <label class="option"><input type="radio" name="q31" value="d">4</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3><span class="day-badge day5">DAY 5</span><span class="question-number">Q32</span></h3>
+                <p>What happens when you cast a float to int in C++?</p>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q32" value="a">Rounds to nearest integer</label>
+                    <label class="option"><input type="radio" name="q32" value="b">Truncates decimal part</label>
+                    <label class="option"><input type="radio" name="q32" value="c">Adds decimal part</label>
+                    <label class="option"><input type="radio" name="q32" value="d">Returns error</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3><span class="day-badge day5">DAY 5</span><span class="question-number">Q33</span></h3>
+                <p>What happens in this mixed arithmetic?</p>
+                <div class="code-block">int a = 5;<br>float b = 2.5;<br>int c = a + b * 2 / 3;</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q33" value="a">c = 6</label>
+                    <label class="option"><input type="radio" name="q33" value="b">c = 7</label>
+                    <label class="option"><input type="radio" name="q33" value="c">c = 5</label>
+                    <label class="option"><input type="radio" name="q33" value="d">c = 8</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3><span class="day-badge day5">DAY 5</span><span class="question-number">Q34</span></h3>
+                <p>Which is an explicit type casting in C++?</p>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q34" value="a">int x = 5.7;</label>
+                    <label class="option"><input type="radio" name="q34" value="b">int x = (int)5.7;</label>
+                    <label class="option"><input type="radio" name="q34" value="c">int x = 5 + 7.2;</label>
+                    <label class="option"><input type="radio" name="q34" value="d">int x = y;</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3><span class="day-badge day5">DAY 5</span><span class="question-number">Q35</span></h3>
+                <p>Tricky modulo with negatives: What is this expression on most C++ implementations?</p>
+                <div class="code-block">(-17) % 5</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q35" value="a">3</label>
+                    <label class="option"><input type="radio" name="q35" value="b">-2</label>
+                    <label class="option"><input type="radio" name="q35" value="c">2</label>
+                    <label class="option"><input type="radio" name="q35" value="d">Implementation defined</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3><span class="day-badge day5">DAY 5</span><span class="question-number">Q36</span></h3>
+                <p>Which operator has higher precedence?</p>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q36" value="a">+</label>
+                    <label class="option"><input type="radio" name="q36" value="b">*</label>
+                    <label class="option"><input type="radio" name="q36" value="c">=</label>
+                    <label class="option"><input type="radio" name="q36" value="d">==</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3><span class="day-badge day5">DAY 5</span><span class="question-number">Q39</span></h3>
+                <p>What happens with this casting overflow on systems where char is signed?</p>
+                <div class="code-block">(char)(130)</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q39" value="a">130</label>
+                    <label class="option"><input type="radio" name="q39" value="b">-126</label>
+                    <label class="option"><input type="radio" name="q39" value="c">127</label>
+                    <label class="option"><input type="radio" name="q39" value="d">Undefined behavior</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3><span class="day-badge day5">DAY 5</span><span class="question-number">Q40</span></h3>
+                <p>What is value of x after this calculation?</p>
+                <div class="code-block">int x = 5;<br>x *= 3;</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q40" value="a">5</label>
+                    <label class="option"><input type="radio" name="q40" value="b">8</label>
+                    <label class="option"><input type="radio" name="q40" value="c">15</label>
+                    <label class="option"><input type="radio" name="q40" value="d">3</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3><span class="day-badge day5">DAY 5</span><span class="question-number">Q41</span></h3>
+                <p>Advanced type promotion: What type is the result of this expression?</p>
+                <div class="code-block">'A' + 1 - 'B' * 2</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q41" value="a">char</label>
+                    <label class="option"><input type="radio" name="q41" value="b">int</label>
+                    <label class="option"><input type="radio" name="q41" value="c">unsigned int</label>
+                    <label class="option"><input type="radio" name="q41" value="d">Implementation defined</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3><span class="day-badge day5">DAY 5</span><span class="question-number">Q43</span></h3>
+                <p>Complex precedence with casting: What is the result?</p>
+                <div class="code-block">(int)3.7 + (int)2.9 * (int)1.1</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q43" value="a">8</label>
+                    <label class="option"><input type="radio" name="q43" value="b">5</label>
+                    <label class="option"><input type="radio" name="q43" value="c">7</label>
+                    <label class="option"><input type="radio" name="q43" value="d">6</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3><span class="day-badge day5">DAY 5</span><span class="question-number">Q44</span></h3>
+                <p>What is the result of integer division?</p>
+                <div class="code-block">20 / 3</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q44" value="a">6.67</label>
+                    <label class="option"><input type="radio" name="q44" value="b">6</label>
+                    <label class="option"><input type="radio" name="q44" value="c">7</label>
+                    <label class="option"><input type="radio" name="q44" value="d">Error</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3><span class="day-badge day5">DAY 5</span><span class="question-number">Q45</span></h3>
+                <p>What happens in this promotion chain?</p>
+                <div class="code-block">short s = 32767;<br>s += 1;<br>int i = s;</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q45" value="a">i = 32768</label>
+                    <label class="option"><input type="radio" name="q45" value="b">i = -32768</label>
+                    <label class="option"><input type="radio" name="q45" value="c">i = 32767</label>
+                    <label class="option"><input type="radio" name="q45" value="d">Undefined behavior</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3><span class="day-badge day5">DAY 5</span><span class="question-number">Q46</span></h3>
+                <p>What does the modulus operator % return?</p>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q46" value="a">Quotient</label>
+                    <label class="option"><input type="radio" name="q46" value="b">Remainder</label>
+                    <label class="option"><input type="radio" name="q46" value="c">Product</label>
+                    <label class="option"><input type="radio" name="q46" value="d">Sum</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3><span class="day-badge day5">DAY 5</span><span class="question-number">Q47</span></h3>
+                <p>Complex casting with precision loss: What is the result?</p>
+                <div class="code-block">(float)(1.0/3.0) == (1.0f/3.0f)</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q47" value="a">true</label>
+                    <label class="option"><input type="radio" name="q47" value="b">false</label>
+                    <label class="option"><input type="radio" name="q47" value="c">Implementation dependent</label>
+                    <label class="option"><input type="radio" name="q47" value="d">Compilation error</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3><span class="day-badge day5">DAY 5</span><span class="question-number">Q49</span></h3>
+                <p>What is the result of nested casting?</p>
+                <div class="code-block">(int)(float)(double)(127.999)</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q49" value="a">127</label>
+                    <label class="option"><input type="radio" name="q49" value="b">128</label>
+                    <label class="option"><input type="radio" name="q49" value="c">127.999</label>
+                    <label class="option"><input type="radio" name="q49" value="d">Implementation dependent</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3><span class="day-badge day5">DAY 5</span><span class="question-number">Q50</span></h3>
+                <p>What happens in this overflow scenario?</p>
+                <div class="code-block">unsigned char c = 255;<br>c += 2;</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q50" value="a">257</label>
+                    <label class="option"><input type="radio" name="q50" value="b">1</label>
+                    <label class="option"><input type="radio" name="q50" value="c">255</label>
+                    <label class="option"><input type="radio" name="q50" value="d">Undefined behavior</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3><span class="day-badge day5">DAY 5</span><span class="question-number">Q51</span></h3>
+                <p>Which casting is done automatically by compiler?</p>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q51" value="a">Explicit casting</label>
+                    <label class="option"><input type="radio" name="q51" value="b">Implicit casting</label>
+                    <label class="option"><input type="radio" name="q51" value="c">Static casting</label>
+                    <label class="option"><input type="radio" name="q51" value="d">Dynamic casting</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3><span class="day-badge day5">DAY 5</span><span class="question-number">Q52</span></h3>
+                <p>Extreme casting: What is the result?</p>
+                <div class="code-block">(bool)(int)(0.0001)</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q52" value="a">true</label>
+                    <label class="option"><input type="radio" name="q52" value="b">false</label>
+                    <label class="option"><input type="radio" name="q52" value="c">1</label>
+                    <label class="option"><input type="radio" name="q52" value="d">0</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3><span class="day-badge day5">DAY 5</span><span class="question-number">Q53</span></h3>
+                <p>What happens in implicit type conversion from int to float?</p>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q53" value="a">Data loss</label>
+                    <label class="option"><input type="radio" name="q53" value="b">No data loss</label>
+                    <label class="option"><input type="radio" name="q53" value="c">Error</label>
+                    <label class="option"><input type="radio" name="q53" value="d">Undefined</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3><span class="day-badge day5">DAY 5</span><span class="question-number">Q54</span></h3>
+                <p>Advanced operator precedence: What is the result?</p>
+                <div class="code-block">sizeof(int) + 1 * 2</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q54" value="a">6</label>
+                    <label class="option"><input type="radio" name="q54" value="b">8</label>
+                    <label class="option"><input type="radio" name="q54" value="c">10</label>
+                    <label class="option"><input type="radio" name="q54" value="d">Implementation dependent</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3><span class="day-badge day5">DAY 5</span><span class="question-number">Q57</span></h3>
+                <p>In this expression, which direction is evaluation?</p>
+                <div class="code-block">a = b = c = 5</div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q57" value="a">Left to right</label>
+                    <label class="option"><input type="radio" name="q57" value="b">Right to left</label>
+                    <label class="option"><input type="radio" name="q57" value="c">Random</label>
+                    <label class="option"><input type="radio" name="q57" value="d">Error</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3><span class="day-badge day5">DAY 5</span><span class="question-number">Q58</span></h3>
+                <p>What does static_cast do in C++?</p>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q58" value="a">Dynamic casting</label>
+                    <label class="option"><input type="radio" name="q58" value="b">Compile-time type checking</label>
+                    <label class="option"><input type="radio" name="q58" value="c">Runtime casting</label>
+                    <label class="option"><input type="radio" name="q58" value="d">No checking</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3><span class="day-badge day5">DAY 5</span><span class="question-number">Q60</span></h3>
+                <p>What does the %= operator do?</p>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q60" value="a">Modulus and assign</label>
+                    <label class="option"><input type="radio" name="q60" value="b">Only modulus</label>
+                    <label class="option"><input type="radio" name="q60" value="c">Only assign</label>
+                    <label class="option"><input type="radio" name="q60" value="d">Compare</label>
+                </div>
+            </div>
+
+            <div class="question">
+                <h3><span class="day-badge day5">DAY 5</span><span class="question-number">Q61</span></h3>
+                <p>What happens when you divide two integers in C++?</p>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q61" value="a">Always gives float result</label>
+                    <label class="option"><input type="radio" name="q61" value="b">Always gives integer result</label>
+                    <label class="option"><input type="radio" name="q61" value="c">Depends on operands</label>
+                    <label class="option"><input type="radio" name="q61" value="d">Compilation error</label>
+                </div>
+            </div>
+        </form>
+
+        <div class="submit-section">
+            <button type="button" class="submit-btn" onclick="calculateScore()">📊 Calculate Score</button>
+            <button type="button" class="reset-btn" onclick="resetQuiz()">🔄 Reset Quiz</button>
+        </div>
+
+        <div id="results" class="results">
+            <h2>🎯 Complete Quiz Results</h2>
+            <div id="scoreDisplay"></div>
+            <div class="progress-bar">
+                <div id="progressFill" class="progress-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Correct answers for complete quiz
+        const correctAnswers = {
+            q1: 'b', q2: 'b', q3: 'b', q4: 'b', q5: 'b',
+            q6: 'c', q7: 'b', q8: 'b', q9: 'a', q10: 'b',
+            q12: 'b', q15: 'c',
+            q16: 'b', q17: 'a', q18: 'a', q19: 'b', q20: 'c',
+            q21: 'd', q22: 'c',
+            q24: 'b', q25: 'a', q26: 'a', q27: 'c', q28: 'a',
+            q29: 'c', q30: 'b', q31: 'a', q32: 'b', q33: 'c',
+            q34: 'b', q35: 'b', q36: 'b', q39: 'b', q40: 'c', 
+            q41: 'b', q43: 'b', q44: 'b', q45: 'b', q46: 'b', 
+            q47: 'a', q49: 'a', q50: 'b', q51: 'b', q52: 'b', 
+            q53: 'b', q54: 'a', q57: 'b', q58: 'b', q60: 'a', q61: 'b'
+        };
+
+        // Explanations for each answer
+        const explanations = {
+            q1: 'Correct: (b) - iostream provides input/output stream functionality like cin, cout, endl.',
+            q2: 'Correct: (b) - return 0 indicates successful program execution to the operating system.',
+            q3: 'Correct: (b) - using namespace std allows using cout, cin without std:: prefix.',
+            q4: 'Correct: (b) - bits/stdc++.h includes all standard libraries but only works in GCC.',
+            q5: 'Correct: (b) - cin >> n leaves newline in buffer, getline() reads empty string.',
+            q6: 'Correct: (c) - %lld is the correct format specifier for long long in scanf.',
+            q7: 'Correct: (b) - Fast I/O optimization with sync_with_stdio(false) and cin.tie(NULL).',
+            q8: 'Correct: (b) - endl flushes buffer making it slower than "\\n" in competitive programming.',
+            q9: 'Correct: (a) - %.2f displays floating point with exactly 2 decimal places.',
+            q10: 'Correct: (b) - cout shows 6 digits by default, others show 10 with explicit precision.',
+            q12: 'Correct: (b) - long long is 64-bit signed: -2^63 to 2^63-1.',
+            q15: 'Correct: (c) - Multiple modifications of x in single expression causes undefined behavior.',
+            q16: 'Correct: (b) - Integer overflow wraps around to -2147483648.',
+            q17: 'Correct: (a) - c++ uses current value (A), ++c increments then uses (C).',
+            q18: 'Correct: (a) - Both conditions true, x becomes 2. Result: 1 2.',
+            q19: 'Correct: (b) - const creates typed variable, #define does preprocessor text replacement.',
+            q20: 'Correct: (c) - Multiple modifications of variables in single expression undefined.',
+            q21: 'Correct: (d) - using namespace std is perfectly acceptable in competitive programming.',
+            q22: 'Correct: (c) - Multiple unsequenced modifications of x and y cause undefined behavior.',
+            q24: 'Correct: (b) - 15 in binary is 1111 (8+4+2+1).',
+            q25: 'Correct: (a) - 4294967296 = 2^32, casting to 32-bit int gives 0.',
+            q26: 'Correct: (a) - Hexadecimal A equals decimal 10.',
+            q27: 'Correct: (c) - Multiple modifications of x without sequence points undefined.',
+            q28: 'Correct: (a) - 255 = 15×16 + 15 = FF in hexadecimal.',
+            q29: 'Correct: (c) - Assignment operators are right-associative.',
+            q30: 'Correct: (b) - 1F hex = 1×16 + 15 = 31 decimal.',
+            q31: 'Correct: (a) - 2 + (3×4)%5 - 1 = 2 + 2 - 1 = 3.',
+            q32: 'Correct: (b) - Casting float to int truncates decimal part.',
+            q33: 'Correct: (c) - 5 + 2.5×2/3 = 5 + 1.67 = 6.67, truncated to 5.',
+            q34: 'Correct: (b) - (int)5.7 is explicit casting with cast operator.',
+            q35: 'Correct: (b) - (-17)%5 = -2 on most C++ implementations.',
+            q36: 'Correct: (b) - Multiplication (*) has higher precedence than addition (+).',
+            q39: 'Correct: (b) - 130 > 127 (max signed char), wraps to -126.',
+            q40: 'Correct: (c) - x *= 3 means x = x * 3 = 5 * 3 = 15.',
+            q41: 'Correct: (b) - Character arithmetic promotes to int type.',
+            q43: 'Correct: (b) - (int)3.7 + (int)2.9 × (int)1.1 = 3 + 2×1 = 5.',
+            q44: 'Correct: (b) - Integer division 20/3 = 6 (truncated).',
+            q45: 'Correct: (b) - short overflow: 32767+1 wraps to -32768.',
+            q46: 'Correct: (b) - Modulus operator % returns remainder of division.',
+            q47: 'Correct: (a) - Both expressions evaluate to same float precision.',
+            q49: 'Correct: (a) - Nested casting truncates: 127.999 → 127.',
+            q50: 'Correct: (b) - unsigned char overflow: 255+2 = 257 wraps to 1.',
+            q51: 'Correct: (b) - Implicit casting is done automatically by compiler.',
+            q52: 'Correct: (b) - 0.0001 → (int)0 → (bool)false.',
+            q53: 'Correct: (b) - int to float conversion preserves value (no data loss).',
+            q54: 'Correct: (a) - sizeof(int) + 1×2 = 4 + 2 = 6 (assuming 32-bit int).',
+            q57: 'Correct: (b) - Assignment operators evaluate right to left.',
+            q58: 'Correct: (b) - static_cast provides compile-time type checking.',
+            q60: 'Correct: (a) - %= performs modulus operation and assigns result.',
+            q61: 'Correct: (b) - Integer division always gives integer result.'
+        };
+
+        // Optimized JavaScript - preserving randomness and partial submission
+        const shuffleArray = arr => {
+            const shuffled = [...arr];
+            for (let i = shuffled.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+            }
+            return shuffled;
+        };
+
+        const randomizeQuestions = () => {
+            const form = document.getElementById('quizForm');
+            const questions = Array.from(form.querySelectorAll('.question'));
+            const shuffledQuestions = shuffleArray(questions);
+            
+            form.innerHTML = '';
+            shuffledQuestions.forEach((question, index) => {
+                const questionNumberSpan = question.querySelector('.question-number');
+                if (questionNumberSpan) {
+                    questionNumberSpan.textContent = `Q${index + 1}`;
+                }
+                form.appendChild(question);
+            });
+        };
+
+        const addOptionLabels = () => {
+            document.querySelectorAll('.question').forEach(question => {
+                const options = question.querySelectorAll('.option');
+                const labels = ['a) ', 'b) ', 'c) ', 'd) '];
+                
+                options.forEach((option, index) => {
+                    if (index < 4) {
+                        const radio = option.querySelector('input[type="radio"]');
+                        const text = option.textContent.trim();
+                        if (radio && !text.includes('a)')) {
+                            option.innerHTML = `<input type="radio" name="${radio.name}" value="${radio.value}"><strong>${labels[index]}</strong> ${text}`;
+                        }
+                    }
+                });
+            });
+        };
+
+        const attachOptionHandlers = () => {
+            document.querySelectorAll('.option').forEach(option => {
+                option.addEventListener('click', function() {
+                    const radio = this.querySelector('input[type="radio"]');
+                    radio.checked = true;
+                    
+                    this.parentNode.querySelectorAll('.option').forEach(sibling => 
+                        sibling.classList.remove('selected'));
+                    this.classList.add('selected');
+                });
+            });
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            randomizeQuestions();
+            addOptionLabels();
+            attachOptionHandlers();
+        });
+
+        const calculateScore = () => {
+            const formData = new FormData(document.getElementById('quizForm'));
+            let totalScore = 0;
+            const totalQuestions = Object.keys(correctAnswers).length;
+            
+            for (let [question, answer] of formData.entries()) {
+                if (correctAnswers[question] === answer) totalScore++;
+            }
+
+            showExplanations();
+            displayResults(totalScore, totalQuestions, formData.size);
+        };
+
+        const showExplanations = () => {
+            document.querySelectorAll('.question').forEach(question => {
+                const radioButton = question.querySelector('input[type="radio"]');
+                if (radioButton) {
+                    const questionName = radioButton.name;
+                    let explanationDiv = question.querySelector('.explanation');
+                    
+                    if (!explanationDiv) {
+                        explanationDiv = document.createElement('div');
+                        explanationDiv.className = 'explanation';
+                        question.appendChild(explanationDiv);
+                    }
+                    
+                    if (explanations[questionName]) {
+                        explanationDiv.textContent = explanations[questionName];
+                        explanationDiv.classList.add('show');
+                    }
+                }
+            });
+        };
+
+        const displayResults = (score, total, answeredQuestions) => {
+            const results = document.getElementById('results');
+            const scoreDisplay = document.getElementById('scoreDisplay');
+            const progressFill = document.getElementById('progressFill');
+            const percentage = (score / total) * 100;
+            
+            results.classList.remove('score-excellent', 'score-good', 'score-average');
+            results.classList.add(percentage >= 80 ? 'score-excellent' : 
+                                percentage >= 60 ? 'score-good' : 'score-average');
+
+            scoreDisplay.innerHTML = `
+                <h3>Your Score: ${score}/${total} (${percentage.toFixed(1)}%)</h3>
+                <p>${getScoreMessage(percentage, answeredQuestions, total)}</p>
+            `;
+
+            progressFill.style.width = percentage + '%';
+            results.style.display = 'block';
+            results.scrollIntoView({ behavior: 'smooth' });
+        };
+
+        const getScoreMessage = (percentage, answered, total) => {
+            const baseMessages = {
+                95: "🏆 LEGENDARY! You are a C++ master with exceptional understanding!",
+                90: "🌟 Outstanding! You have excellent mastery of C++ fundamentals!",
+                80: "🎉 Great job! You have a strong understanding of the concepts.",
+                70: "👍 Good work! You understand most concepts but could improve in some areas.",
+                60: "📖 Fair understanding. Review the topics and practice more.",
+                0: "📚 You need to review the fundamentals more thoroughly. Don't give up!"
+            };
+            
+            const baseMessage = Object.entries(baseMessages)
+                .find(([threshold]) => percentage >= threshold)?.[1] || baseMessages[0];
+            
+            return answered < total ? 
+                `📋 You've completed ${answered} out of ${total} questions. ${baseMessage} Consider answering all questions for a complete assessment.` : 
+                baseMessage;
+        };
+
+        const resetQuiz = () => {
+            document.getElementById('quizForm').reset();
+            document.getElementById('results').style.display = 'none';
+            
+            document.querySelectorAll('.option').forEach(option => option.classList.remove('selected'));
+            document.querySelectorAll('.explanation').forEach(explanation => explanation.classList.remove('show'));
+
+            randomizeQuestions();
+            addOptionLabels();
+            attachOptionHandlers();
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+    </script>
+</body>
+</html>
