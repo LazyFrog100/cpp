@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C++ I/O Performance Comparison</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
+        
+        .chart-container {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .bar-chart {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .bar-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .bar-label {
+            min-width: 180px;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        .bar {
+            flex: 1;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            padding: 0 15px;
+            color: white;
+            font-weight: bold;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .bar::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(255,255,255,0.2) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.2) 75%, transparent 75%);
+            background-size: 20px 20px;
+            animation: slide 2s linear infinite;
+        }
+        
+        @keyframes slide {
+            0% { transform: translateX(-20px); }
+            100% { transform: translateX(20px); }
+        }
+        
+        .fastest { background: linear-gradient(135deg, #ff6b6b, #ee5a24); width: 100%; }
+        .fast { background: linear-gradient(135deg, #feca57, #ff9ff3); width: 85%; }
+        .medium { background: linear-gradient(135deg, #48dbfb, #0abde3); width: 65%; }
+        .slow { background: linear-gradient(135deg, #1dd1a1, #10ac84); width: 45%; }
+        .slower { background: linear-gradient(135deg, #a55eea, #8c7ae6); width: 30%; }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .comparison-table th,
+        .comparison-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .comparison-table th {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            font-weight: 600;
+        }
+        
+        .comparison-table tr:hover {
+            background: rgba(102, 126, 234, 0.1);
+        }
+        
+        .pros { color: #27ae60; font-weight: 600; }
+        .cons { color: #e74c3c; font-weight: 600; }
+        
+        .code-example {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+            position: relative;
+            overflow-x: auto;
+        }
+        
+        .code-example::before {
+            content: 'C++';
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: #e74c3c;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+        }
+        
+        .tip-box {
+            background: linear-gradient(135deg, #ffecd2, #fcb69f);
+            border-left: 5px solid #ff6b6b;
+            padding: 20px;
+            border-radius: 0 10px 10px 0;
+            margin: 20px 0;
+        }
+        
+        .tip-box h3 {
+            color: #e74c3c;
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 C++ I/O Performance Guide</h1>
+        
+        <div class="chart-container">
+            <h2>Performance Comparison (Reading 1 Million Integers)</h2>
+            <div class="bar-chart">
+                <div class="bar-item">
+                    <div class="bar-label">scanf() with optimizations</div>
+                    <div class="bar fastest">~0.1 seconds</div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar-label">Fast I/O cin/cout</div>
+                    <div class="bar fast">~0.12 seconds</div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar-label">printf/scanf (default)</div>
+                    <div class="bar medium">~0.15 seconds</div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar-label">cin/cout (default)</div>
+                    <div class="bar slow">~0.22 seconds</div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar-label">cin/cout with endl</div>
+                    <div class="bar slower">~0.35 seconds</div>
+                </div>
+            </div>
+        </div>
+        
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>Method</th>
+                    <th>Pros</th>
+                    <th>Cons</th>
+                    <th>Best Use Case</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>cin/cout</strong></td>
+                    <td class="pros">Type-safe, Easy to use, Object-oriented</td>
+                    <td class="cons">Slower by default, More memory</td>
+                    <td>Learning, Small programs</td>
+                </tr>
+                <tr>
+                    <td><strong>printf/scanf</strong></td>
+                    <td class="pros">Fast, Precise formatting, Lightweight</td>
+                    <td class="cons">Not type-safe, Format string errors</td>
+                    <td>Performance-critical, Embedded systems</td>
+                </tr>
+                <tr>
+                    <td><strong>Fast I/O</strong></td>
+                    <td class="pros">Very fast, Still type-safe</td>
+                    <td class="cons">Can't mix with C I/O, Less interactive</td>
+                    <td>Competitive programming, Big data</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="tip-box">
+            <h3>💡 Pro Tip: Choosing the Right I/O Method</h3>
+            <p><strong>For beginners:</strong> Start with cin/cout - they're safer and easier to understand.</p>
+            <p><strong>For performance:</strong> Use fast I/O or scanf/printf when processing large amounts of data.</p>
+            <p><strong>For formatting:</strong> printf gives you the most control over output format.</p>
+        </div>
+        
+        <div class="chart-container">
+            <h2>Fast I/O Setup Code</h2>
+            <div class="code-example">
+#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    // Enable fast I/O
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    
+    int n;
+    cin >> n;
+    
+    for (int i = 0; i < n; i++) {
+        int x;
+        cin >> x;
+        cout << x * 2 << "\n";  // Use \n instead of endl
+    }
+    
+    return 0;
+}
+            </div>
+        </div>
+        
+        <div class="chart-container">
+            <h2>Memory Usage Comparison</h2>
+            <div class="bar-chart">
+                <div class="bar-item">
+                    <div class="bar-label">scanf/printf</div>
+                    <div class="bar fastest">Minimal memory overhead</div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar-label">Fast I/O cin/cout</div>
+                    <div class="bar fast">Low memory overhead</div>
+                </div>
+                <div class="bar-item">
+                    <div class="bar-label">Standard cin/cout</div>
+                    <div class="bar medium">Moderate memory overhead</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
